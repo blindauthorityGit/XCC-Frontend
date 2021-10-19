@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import VCFGenerator from "../vcf/vcf-generator";
@@ -12,11 +13,14 @@ export default function ModalBox(props) {
     const builder = imageUrlBuilder(sanityClient);
     const imgRef = useRef();
 
+    const history = useHistory();
+
     function urlFor(source) {
         return builder.image(source);
     }
 
     useEffect(() => {
+        history.push("/kontakt");
         sanityClient
             .fetch(
                 `*[_type == 'person'] {
