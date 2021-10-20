@@ -4,7 +4,9 @@ import Template from "./vcf-template";
 export default function VCFGenerator(props) {
     const [postData, setPostData] = useState(null);
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        console.log(Template);
+    }, []);
 
     function download(filename, text) {
         let element = document.createElement("a");
@@ -28,7 +30,7 @@ export default function VCFGenerator(props) {
     Template.EMAIL = props.email;
 
     let text = JSON.stringify(Template).replace(/[{}]/g, "").replace(/["]/g, "").replace(/[,]/g, "\n");
-    let filename = `test.vcf`;
+    let filename = `${props.filename}.vcf`;
 
     return (
         <div>

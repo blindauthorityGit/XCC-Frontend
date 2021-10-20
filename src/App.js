@@ -1,5 +1,4 @@
 import React, { useEffect, Suspense, lazy } from "react";
-import { BrowserRouter as Router, useHistory } from "react-router-dom";
 import "./App.css";
 import "./css/main.css";
 
@@ -24,12 +23,6 @@ const Links = lazy(() => import("./components/link.js"));
 const Email = lazy(() => import("./components/email.js"));
 
 function App() {
-    const history = useHistory();
-
-    const handleHistory = (e) => {
-        history.push(e);
-    };
-
     useEffect(() => {
         sanityClient
             .fetch(
@@ -54,12 +47,12 @@ function App() {
             <div className="wrapperMain">
                 <div className="row">
                     <Suspense fallback={<div>LOADING</div>}>
-                        <Gallery></Gallery>
-                        <Links></Links>
                         <Person></Person>
+                        <Gallery></Gallery>
+                        <Youtube></Youtube>
+                        <Links></Links>
                         <Email></Email>
                         <Call></Call>
-                        <Youtube></Youtube>
                     </Suspense>
                 </div>
             </div>

@@ -22,7 +22,7 @@ export default function Person(props) {
         <div className="">
             {postData && (
                 // FACEBOOK
-                <div className="socialMedia d-flex  mb-3 mt-3">
+                <div className="socialMedia d-flex  mb-3 mt-3 lightSM">
                     {postData[0].socialmedia_global !== undefined && (
                         <div className="facebook">
                             {postData[0].socialmedia_global.facebook && (

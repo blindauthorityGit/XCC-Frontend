@@ -48,11 +48,11 @@ export default function MyMap(props) {
         //     console.log("FALSCH");
         //     setShowMap(false);
         // }
-        if (long === -95.7048514) {
-            console.log("FALSCH");
-            setShowMap(false);
-            fetchMe();
-        }
+        // if (long === -95.7048514) {
+        //     console.log("FALSCH");
+        //     setShowMap(false);
+        //     fetchMe();
+        // }
     }, [fetchfin]);
 
     const Map = () => {
@@ -70,15 +70,15 @@ export default function MyMap(props) {
                         lat: lat,
                         lng: long,
                     }}
-                    onClick={() => {
-                        setSelectedPos(this);
-                    }}
+                    // onClick={() => {
+                    //     setSelectedPos(this);
+                    // }}
                 ></Marker>
-                {selectedPos && (
+                {/* {selectedPos && (
                     <InfoWindow position={{ lat: 50.12363, lng: 8.64814 }}>
                         <div>Hier bin ich</div>
                     </InfoWindow>
-                )}
+                )} */}
             </GoogleMap>
         );
     };

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 
 import ModalPerson from "./modalContent/modalPerson.js";
 import ModalGallery from "./modalContent/modalGallery";
@@ -9,28 +10,62 @@ export default function ModalBox(props) {
     const myId = props.id;
     const categourie = props.cat;
 
+    const [locationKeys, setLocationKeys] = useState([]);
+
+    const history = useHistory();
+    let location = useLocation();
+
+    const ref = useRef();
+
+    useEffect(() => {
+        return history.listen((location) => {
+            console.log(history);
+            if (history.action === "PUSH") {
+                setLocationKeys([location.key]);
+                console.log(location.key);
+            }
+
+            if (history.action === "POP") {
+                if (locationKeys[1] === location.key) {
+                    setLocationKeys(([_, ...keys]) => keys);
+
+                    // Handle forward event
+                } else {
+                    setLocationKeys((keys) => [location.key, ...keys]);
+
+                    close();
+                    console.log("i went back");
+                }
+            }
+        });
+    }, [locationKeys]);
+
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, []);
 
     function close() {
+        ref.current.children[0].children[0].children[0].classList.add("fade-out-quick");
         setAnimationnu("slide-out-top");
         setTimeout(() => {
             props.changeState(false);
         }, 300);
         document.querySelector("#overlay").classList.add("fade-out");
+        history.push("/");
     }
 
     return (
-        <div className={`${animationnu} container-fluid position-absolute h-80 modalBox`}>
-            <div>
-                <div className="closer" id="closer" onClick={() => close()}>
-                    <i class="bi bi-caret-left"></i>
-                </div>
-                {categourie === "person" && <ModalPerson id={myId}></ModalPerson>}
-                {categourie === "gallery" && <ModalGallery id={myId}></ModalGallery>}
-                {categourie === "youtube" && <ModalYoutube id={myId}></ModalYoutube>}
+        <>
+            <div className={`closer ${animationnu}`} id="closer" onClick={() => close()}>
+                <i class="bi bi-caret-left"></i>
             </div>
-        </div>
+            <div className={`${animationnu} container-fluid position-absolute h-80 modalBox`} ref={ref}>
+                <div>
+                    {categourie === "person" && <ModalPerson id={myId}></ModalPerson>}
+                    {categourie === "gallery" && <ModalGallery id={myId}></ModalGallery>}
+                    {categourie === "youtube" && <ModalYoutube id={myId}></ModalYoutube>}
+                </div>
+            </div>
+        </>
     );
 }

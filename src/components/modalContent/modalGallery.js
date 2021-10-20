@@ -5,6 +5,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import removeAnimation from "../controller/animationControl.js";
+import { useHistory } from "react-router-dom";
 
 export default function ModalGallery(props) {
     const [postData, setPostData] = useState(null);
@@ -13,12 +14,15 @@ export default function ModalGallery(props) {
     const BlockContent = require("@sanity/block-content-to-react");
 
     const builder = imageUrlBuilder(sanityClient);
+    const history = useHistory();
 
     function urlFor(source) {
         return builder.image(source);
     }
 
     useEffect(() => {
+        history.push("/gallery");
+
         sanityClient
             .fetch(
                 `*[_type == 'gallery'] {

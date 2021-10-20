@@ -75,7 +75,7 @@ export default function Settings(props) {
             {showOverlay && <div className="overlayBlack slide-in-top" id="overlayBlack"></div>}
             {postData && (
                 <span>
-                    <div className="socialMediaWrapper" id="socialMediaWrapper">
+                    <div className="socialMediaWrapper " id="socialMediaWrapper">
                         <Socialmedia></Socialmedia>
                     </div>
                     <div className="col-12 px-4">

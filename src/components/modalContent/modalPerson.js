@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense, lazy } from "react";
 import { useHistory } from "react-router-dom";
 import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import VCFGenerator from "../vcf/vcf-generator";
 import defaultPerson from "../../assets/imgs/person-fill.svg";
-import Map from "../controller/maps.js";
+// import Map from "../controller/maps.js";
 import removeAnimation from "../controller/animationControl.js";
+
+const Map = lazy(() => import("../controller/maps.js"));
 
 export default function ModalBox(props) {
     const [postData, setPostData] = useState(null);
     const [showOverlay, setshowOverlay] = useState(false);
     const builder = imageUrlBuilder(sanityClient);
     const imgRef = useRef();
-
     const history = useHistory();
 
     function urlFor(source) {
@@ -101,14 +102,14 @@ export default function ModalBox(props) {
                                 />
                             ))}
                     </div>
-                    <div className="mainText text-center mt-5 scale-in-ver-top">
+                    <div className="mainText text-center mt-5 scale-in-ver-top-delayed">
                         <h3 className="pt-5">
                             {postData[props.id].vorname} {postData[props.id].nachname}
                         </h3>
                         <h4>{postData[props.id].position} </h4>
                     </div>
                     {/* FACEBOOK */}
-                    <div className="socialMedia d-flex  mb-3 mt-4 scale-in-ver-top">
+                    <div className="socialMedia d-flex  mb-3 mt-4 scale-in-ver-top-delayed">
                         {postData[props.id].socialmedia !== undefined && (
                             <div className="facebook">
                                 {postData[props.id].socialmedia.facebook && (
@@ -212,13 +213,16 @@ export default function ModalBox(props) {
                     </div>
 
                     {postData[props.id].adresse.maps && (
-                        <div className="fade-in-delayed my-4">
-                            <Map id={props.id}></Map>
-                        </div>
+                        <Suspense fallback={<div>LOADING</div>}>
+                            <div className="fade-in-delayed my-4 mapWrapper">
+                                <Map id={props.id}></Map>
+                            </div>
+                        </Suspense>
                     )}
                     <div className="row mt-4 scale-in-ver-top-delayed">
                         <div className="col-12 ">
                             <VCFGenerator
+                                filename={`${postData[props.id].vorname}${postData[props.id].nachname}`}
                                 firstName={postData[props.id].vorname}
                                 lastName={postData[props.id].nachname}
                                 role={postData[props.id].position}
