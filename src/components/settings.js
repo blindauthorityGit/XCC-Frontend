@@ -24,6 +24,7 @@ export default function Settings(props) {
                   `
             )
             .then((data) => {
+                console.log(data);
                 if (data.length > 0) {
                     setPostData(data);
                     landingBg.current.style.backgroundImage = "url(" + urlFor(data[0].backgroundUpload) + ")";

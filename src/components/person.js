@@ -6,6 +6,8 @@ import Overlay from "./overlay.js";
 import { createRipple } from "./controller/rippler.js";
 import Button from "./button";
 
+import imageUrlBuilder from "@sanity/image-url";
+
 export default function Person(props) {
     const [postData, setPostData] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -15,6 +17,12 @@ export default function Person(props) {
     const [animation, setAnimation] = useState("");
     const overlayRef = useRef();
 
+    const builder = imageUrlBuilder(sanityClient);
+
+    function urlFor(source) {
+        return builder.image(source);
+    }
+
     useEffect(() => {
         sanityClient
             .fetch(
@@ -23,6 +31,7 @@ export default function Person(props) {
             )
             .then((data) => {
                 setPostData(data);
+                console.log(data);
             })
             .catch(console.error);
         return () => {};
@@ -68,6 +77,7 @@ export default function Person(props) {
                             modal={showModalSwitch}
                             orderClass={postData[i].orderClass}
                             orderName={`order-${postData[i].orderClass}`}
+                            bg={urlFor(postData[i].button_settings.bg)}
                         ></Button>
                     </>
                 ))}

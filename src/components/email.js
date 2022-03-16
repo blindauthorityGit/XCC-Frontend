@@ -4,8 +4,16 @@ import sanityClient from "../client";
 import Button_Link from "./button_link.js";
 import { createRipple } from "./controller/rippler.js";
 
+import imageUrlBuilder from "@sanity/image-url";
+
 export default function Email(props) {
     const [postData, setPostData] = useState(null);
+
+    const builder = imageUrlBuilder(sanityClient);
+
+    function urlFor(source) {
+        return builder.image(source);
+    }
 
     useEffect(() => {
         sanityClient
@@ -38,6 +46,7 @@ export default function Email(props) {
                         modal={rippler}
                         orderClass={postData[i].orderClass}
                         orderName={`order-${postData[i].orderClass}`}
+                        bg={urlFor(postData[i].button_settings.bg)}
                     ></Button_Link>
                 ))}
         </>
