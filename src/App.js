@@ -12,6 +12,8 @@ import "./css/main.css";
 
 import sanityClient from "./client";
 import Sponsored from "./components/sponsored.js";
+import Inprint from "./components/sites/inprint";
+import Datenschutz from "./components/sites/datenschutz";
 
 const Settings = lazy(() => import("./components/settings.js"));
 
@@ -32,7 +34,11 @@ function App() {
               `
             )
             .then((data) => {
-                document.title = `${data[0].titleApp} - XCC Connect`;
+                if (data.length > 0) {
+                    document.title = `${data[0].titleApp} - XCC Connect`;
+                } else {
+                    document.title = `XCC Connect`;
+                }
             })
             .catch(console.error);
     }, []);
@@ -57,6 +63,10 @@ function App() {
                 </div>
             </div>
             <Sponsored></Sponsored>
+            <div className="flex rechtliches justify-center text-gray-200 mb-10">
+                <Inprint></Inprint>
+                <Datenschutz></Datenschutz>
+            </div>
         </div>
     );
 }

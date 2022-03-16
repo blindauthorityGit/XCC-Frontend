@@ -27,6 +27,7 @@ export default function Youtube(props) {
             )
             .then((data) => {
                 setPostData(data);
+                // setShowModal(true);
             })
             .catch(console.error);
     }, []);

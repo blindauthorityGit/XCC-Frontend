@@ -67,7 +67,6 @@ export default function Person(props) {
                         <div className="whatsapp">
                             {postData[0].socialmedia_global.whatsapp && (
                                 <a href={`https://wa.me/${postData[0].socialmedia_global.whatsapp}`}>
-                                    {console.log(`https://wa.me/${postData[0].socialmedia_global.whatsapp}`)}
                                     <i class="bi bi-whatsapp"></i>
                                 </a>
                             )}

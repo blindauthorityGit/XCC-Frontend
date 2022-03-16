@@ -41,6 +41,18 @@ h4 {
     color: $blueGrey;
 }
 
+.textWrapper,
+.modalInprint {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-align: left !important;
+    }
+}
+
 .order-6 {
     order: 6 !important;
 }
@@ -88,6 +100,7 @@ a {
     svg {
         max-height: 100%;
         max-width: 100%;
+        object-fit: contain;
         // max-width: 6rem;
         // max-height: 4rem;
     }
@@ -118,6 +131,16 @@ span.ripple {
     color: #e6e6e6;
 }
 
+.custom {
+    padding-top: 2rem;
+    a {
+        display: block;
+        margin-bottom: 1rem;
+        color: blue;
+        text-decoration: underline;
+    }
+}
+
 .lightSM {
     font-size: 1rem;
     color: #fffffe;
@@ -127,6 +150,20 @@ span.ripple {
 
 .galleryClose {
     top: -3%;
+}
+
+.rechtliches {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .inprint {
+        // margin-right: 1rem;
+    }
+}
+
+.inprint {
+    color: $blueGrey;
 }
 
 #portrait {
@@ -233,6 +270,10 @@ span.ripple {
         // border-radius: 20px;
         transition: all ease-in-out 250ms;
     }
+}
+
+.mb-10 {
+    padding-bottom: 2rem;
 }
 
 .galleryInput {
@@ -404,10 +445,14 @@ span.ripple {
 }
 
 .bright-text {
-    color: #adb9c5;
+    color: white;
     i {
-        color: #adb9c5;
+        color: white;
     }
+    // color: #adb9c5;
+    // i {
+    //     color: #adb9c5;
+    // }
 }
 
 .videoWrapper {

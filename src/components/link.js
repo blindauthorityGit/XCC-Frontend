@@ -10,6 +10,7 @@ const Button_Link = lazy(() => import("../components/button_link.js"));
 
 export default function Links(props) {
     const [postData, setPostData] = useState(null);
+
     const builder = imageUrlBuilder(sanityClient);
 
     function urlFor(source) {
@@ -30,15 +31,29 @@ export default function Links(props) {
                     "hintergrundbild": hintergrundbild.asset->url,
                     showTitle,
                     button_settings,
-                    "buttonBG": bg.asset->url, 
-                  }
+                    "buttonBG": bg.asset->url,
+                }
                   `
             )
             .then((data) => {
                 setPostData(data);
+                console.log(data);
             })
             .catch(console.error);
     }, []);
+
+    // order(order asc) {
+    //     display,
+    //     orderClass,
+    //     title,
+    //     colorlist,
+    //     "file": file.asset->url,
+    //     url,
+    //     box,
+    //     "hintergrundbild": hintergrundbild.asset->url,
+    //     showTitle,
+    //     button_settings,
+    //     "buttonBG": bg.asset->url,
 
     function rippler(i) {
         createRipple(i);
@@ -77,7 +92,7 @@ export default function Links(props) {
                                     order={i}
                                     e={e}
                                     icon="bi bi-link"
-                                    cat="liuk"
+                                    cat="link"
                                     data={postData}
                                     key={`link${i}`}
                                     modal={rippler}
@@ -89,6 +104,33 @@ export default function Links(props) {
                         )}
                     </>
                 ))}
+            {/* {showModal && (
+                <>
+                    <ModalBox
+                        show={showModal}
+                        id={0}
+                        cat="custom"
+                        animation={"slide-in-top"}
+                        changeState={(state) => setShowModal(state)}
+                    ></ModalBox>
+                    <Overlay></Overlay>
+                </>
+            )} */}
+            {/* {postData &&
+                postData.map((e, i) => (
+                    <Button
+                        index={i}
+                        key={`link${i}`}
+                        e={e}
+                        icon="bi bi-link"
+                        cat="custom"
+                        data={postData}
+                        modal={showModalSwitch}
+                        bg={urlFor(postData[i].button_settings.bg)}
+                        orderClass={postData[i].orderClass}
+                        orderName={`order-${postData[i].orderClass}`}
+                    ></Button>
+                ))} */}
         </>
     );
 }

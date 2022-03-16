@@ -2,7 +2,7 @@
   "name": "xcc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sabocon-werner.xcc-connect.com",
+  "homepage": "https://promotred.xcc-connect.com",
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.13.0",
@@ -11,6 +11,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "get-youtube-id": "^1.0.1",
+    "google-map-react": "^2.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-dotenv": "^0.1.3",

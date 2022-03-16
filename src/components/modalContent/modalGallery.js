@@ -51,7 +51,9 @@ export default function ModalGallery(props) {
                     ))}
                 </Carousel>
             )}
-            {postData && <BlockContent blocks={postData[myId].beschreibung}></BlockContent>}
+            <div className="textWrapper">
+                {postData && <BlockContent blocks={postData[myId].beschreibung}></BlockContent>}
+            </div>
         </>
     );
 }

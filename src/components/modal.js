@@ -4,6 +4,9 @@ import { useHistory, useLocation } from "react-router-dom";
 import ModalPerson from "./modalContent/modalPerson.js";
 import ModalGallery from "./modalContent/modalGallery";
 import ModalYoutube from "./modalContent/modalYoutube";
+import ModalInprint from "./modalContent/modalInprint";
+import ModalDatenschutz from "./modalContent/modalDatenschutz";
+import ModalCustom from "./modalContent/modalCustom";
 
 export default function ModalBox(props) {
     const [animationnu, setAnimationnu] = useState(props.animation);
@@ -19,10 +22,8 @@ export default function ModalBox(props) {
 
     useEffect(() => {
         return history.listen((location) => {
-            console.log(history);
             if (history.action === "PUSH") {
                 setLocationKeys([location.key]);
-                console.log(location.key);
             }
 
             if (history.action === "POP") {
@@ -34,7 +35,6 @@ export default function ModalBox(props) {
                     setLocationKeys((keys) => [location.key, ...keys]);
 
                     close();
-                    console.log("i went back");
                 }
             }
         });
@@ -64,6 +64,9 @@ export default function ModalBox(props) {
                     {categourie === "person" && <ModalPerson id={myId}></ModalPerson>}
                     {categourie === "gallery" && <ModalGallery id={myId}></ModalGallery>}
                     {categourie === "youtube" && <ModalYoutube id={myId}></ModalYoutube>}
+                    {categourie === "inprint" && <ModalInprint id={myId}></ModalInprint>}
+                    {categourie === "datenschutz" && <ModalDatenschutz id={myId}></ModalDatenschutz>}
+                    {categourie === "custom" && <ModalCustom id={myId}></ModalCustom>}
                 </div>
             </div>
         </>

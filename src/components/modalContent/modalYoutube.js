@@ -26,7 +26,6 @@ export default function Youtube(props) {
             )
             .then((data) => {
                 setPostData(data);
-                console.log(data, "VIEO");
 
                 setUrl(getYouTubeID(data[myId].url));
                 setOpts({
@@ -37,8 +36,6 @@ export default function Youtube(props) {
                         autoplay: 1,
                     },
                 });
-
-                console.log(window.innerWidth);
             })
             .catch(console.error);
     }, []);
@@ -49,12 +46,20 @@ export default function Youtube(props) {
             {postData && opts && (
                 <div className="">
                     <div className="videoWrapper">
-                        <YouTube videoId={url} opts={opts}></YouTube>
+                        <YouTube
+                            videoId={url}
+                            opts={opts}
+                            onEnd={() => {
+                                console.log("ENDEE");
+                            }}
+                        ></YouTube>
                     </div>
                     <div className="container mt-4">
                         <div className="row">
                             <div className="col" style={{ paddingTop: opts.height + "px" }}>
-                                <BlockContent blocks={postData[myId].beschreibung}></BlockContent>
+                                <div className="textWrapper">
+                                    <BlockContent blocks={postData[myId].beschreibung}></BlockContent>
+                                </div>
                             </div>
                         </div>
                     </div>

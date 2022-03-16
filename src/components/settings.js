@@ -21,19 +21,25 @@ export default function Settings(props) {
         sanityClient
             .fetch(
                 `*[_type == 'siteSettings']
-
                   `
             )
             .then((data) => {
-                setPostData(data);
-                landingBg.current.style.backgroundImage = "url(" + urlFor(data[0].backgroundUpload) + ")";
+                if (data.length > 0) {
+                    setPostData(data);
+                    landingBg.current.style.backgroundImage = "url(" + urlFor(data[0].backgroundUpload) + ")";
 
-                document.body.style.background = data[0].colorlist.value;
-                setFullBg(data[0].fullBG);
-                document.querySelector(".loaderWrapper").classList.add("fade-out");
-                setTimeout(() => {
-                    document.querySelector(".loaderWrapper").style.zIndex = -1;
-                }, 1000);
+                    document.body.style.background = data[0].colorlist.value;
+                    setFullBg(data[0].fullBG);
+                    document.querySelector(".loaderWrapper").classList.add("fade-out");
+                    setTimeout(() => {
+                        document.querySelector(".loaderWrapper").style.zIndex = -1;
+                    }, 1000);
+                } else {
+                    document.querySelector(".loaderWrapper").classList.add("fade-out");
+                    setTimeout(() => {
+                        document.querySelector(".loaderWrapper").style.zIndex = -1;
+                    }, 1000);
+                }
             })
             .catch(console.error);
     }, []);
@@ -100,11 +106,7 @@ export default function Settings(props) {
                                 )}
                             </div>
                         )}
-                        {/* {postData[0].logoPlacment === "center" && !showOverlay && (
-                            <div className="logoWrapper d-flex justify-content-center">
-                                <img src={urlFor(postData[0].logo).width(120).height(120)} alt="" />
-                            </div>
-                        )} */}
+
                         {postData[0].logoPlacement === "left" && (
                             <div className="logoWrapper d-flex">
                                 <img src={urlFor(postData[0].logoUpload).width(120).height(120)} alt="" />
@@ -124,7 +126,6 @@ export default function Settings(props) {
                         <div className={`mt-3 mb-4 block scale-in-ver-top ${fullBg ? "d-none" : ""}`}>
                             <BlockContent blocks={postData[0].richtext}></BlockContent>
                         </div>
-                        {/* <hr /> */}
                     </div>
                 </span>
             )}

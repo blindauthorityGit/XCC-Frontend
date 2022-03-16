@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Template from "./vcf-template";
 
 export default function VCFGenerator(props) {
-    const [postData, setPostData] = useState(null);
-
-    useEffect(() => {
-        console.log(Template);
-    }, []);
-
     function download(filename, text) {
         let element = document.createElement("a");
         element.style.display = "none";
@@ -18,7 +12,6 @@ export default function VCFGenerator(props) {
 
         element.click();
         document.body.removeChild(element);
-        console.log(text);
     }
 
     Template.FN = props.firstName;

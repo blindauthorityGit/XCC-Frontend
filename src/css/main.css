@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap");
 .slide-in-top {
   -webkit-animation: slide-in-top 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-in-top 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -115,7 +116,7 @@ html {
 
 html,
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Titillium", sans-serif;
   color: #313131;
 }
 
@@ -146,6 +147,21 @@ h3 {
 h4 {
   font-size: 0.85rem;
   color: #adb9c5;
+}
+
+.textWrapper h1,
+.textWrapper h2,
+.textWrapper h3,
+.textWrapper h4,
+.textWrapper h5,
+.textWrapper h6,
+.modalInprint h1,
+.modalInprint h2,
+.modalInprint h3,
+.modalInprint h4,
+.modalInprint h5,
+.modalInprint h6 {
+  text-align: left !important;
 }
 
 .order-6 {
@@ -209,6 +225,8 @@ a {
 .box svg {
   max-height: 100%;
   max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .border-button {
@@ -234,6 +252,17 @@ span.ripple {
   color: #e6e6e6;
 }
 
+.custom {
+  padding-top: 2rem;
+}
+
+.custom a {
+  display: block;
+  margin-bottom: 1rem;
+  color: blue;
+  text-decoration: underline;
+}
+
 .lightSM {
   font-size: 1rem;
   color: #fffffe;
@@ -243,6 +272,26 @@ span.ripple {
 
 .galleryClose {
   top: -3%;
+}
+
+.rechtliches {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inprint {
+  color: #adb9c5;
 }
 
 #portrait {
@@ -358,6 +407,10 @@ span.ripple {
   transition: all ease-in-out 250ms;
 }
 
+.mb-10 {
+  padding-bottom: 2rem;
+}
+
 .thumbnail {
   width: 5.8rem;
   height: 5.8rem;
@@ -456,7 +509,7 @@ span.ripple {
 
 .block {
   text-align: center;
-  color: "Poppins", sans-serif;
+  color: "Titillium", sans-serif;
 }
 
 .controll {
@@ -536,11 +589,11 @@ span.ripple {
 }
 
 .bright-text {
-  color: #adb9c5;
+  color: white;
 }
 
 .bright-text i {
-  color: #adb9c5;
+  color: white;
 }
 
 .videoWrapper {

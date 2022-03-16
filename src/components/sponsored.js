@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import sanityClient from "../client";
 
 import Logo from "../img/xcc_logo_white.svg";
@@ -14,9 +14,11 @@ export default function Sponsored() {
                   `
             )
             .then((data) => {
-                if (data[0].colorlist.value === "white") {
-                    btnRef.current.children[0].style.color = "black";
-                    btnRef.current.children[1].style.filter = "invert(1)";
+                if (data.length > 0) {
+                    if (data[0].colorlist.value === "white") {
+                        btnRef.current.children[0].style.color = "black";
+                        btnRef.current.children[1].style.filter = "invert(1)";
+                    }
                 }
             })
             .catch(console.error);

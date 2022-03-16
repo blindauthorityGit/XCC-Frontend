@@ -12,7 +12,8 @@ export default function Button_Link(props) {
                 className={`${
                     props.e.button_settings.colorlist.title === "Blau" ||
                     props.e.button_settings.colorlist.title === "Schwarz" ||
-                    props.e.button_settings.colorlist.title === "Rot"
+                    props.e.button_settings.colorlist.title === "Rot" ||
+                    props.e.button_settings.colorlist.title === "PulsRot"
                         ? "bright-text"
                         : "dark-text"
                 } ${props.e.button_settings.border ? "border-button" : ""} 

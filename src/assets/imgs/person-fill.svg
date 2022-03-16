@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52">
+  <g id="person-fill" transform="translate(-11164 9383)">
+    <circle id="Ellipse_26" data-name="Ellipse 26" cx="26" cy="26" r="26" transform="translate(11164 -9383)" fill="#fff"/>
+    <path id="person-fill-2" data-name="person-fill" d="M4.444,31.33A2.394,2.394,0,0,1,2,28.886c0-2.444,2.444-9.777,14.665-9.777S31.33,26.442,31.33,28.886a2.394,2.394,0,0,1-2.444,2.444ZM16.665,16.665A7.333,7.333,0,1,0,9.333,9.333,7.333,7.333,0,0,0,16.665,16.665Z" transform="translate(11173 -9374)"/>
+  </g>
 </svg>

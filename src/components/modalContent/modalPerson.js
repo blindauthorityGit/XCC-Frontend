@@ -7,6 +7,8 @@ import defaultPerson from "../../assets/imgs/person-fill.svg";
 // import Map from "../controller/maps.js";
 import removeAnimation from "../controller/animationControl.js";
 
+import SimpleMap from "../controller/newMap.js";
+
 const Map = lazy(() => import("../controller/maps.js"));
 
 export default function ModalBox(props) {
@@ -40,9 +42,7 @@ export default function ModalBox(props) {
                 setPostData(data);
             })
             .catch(console.error);
-        return () => {
-            console.log("unmounted");
-        };
+        return () => {};
     }, []);
 
     function imageBigger(e) {
@@ -211,6 +211,8 @@ export default function ModalBox(props) {
                             )}
                         </div>
                     </div>
+
+                    {/* <SimpleMap /> */}
 
                     {postData[props.id].adresse.maps && (
                         <Suspense fallback={<div>LOADING</div>}>
