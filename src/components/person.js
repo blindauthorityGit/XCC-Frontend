@@ -60,6 +60,7 @@ export default function Person(props) {
                         cat="person"
                         animation={animation}
                         changeState={(state) => setShowModal(state)}
+                        data={postData}
                     ></ModalBox>
                     <Overlay ref={overlayRef}></Overlay>
                 </>

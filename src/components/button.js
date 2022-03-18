@@ -43,7 +43,7 @@ export default function Button(props) {
                 onClick={props.modal}
             >
                 {props.e.button_settings.icon && <i data-id={props.index} class={props.icon}></i>}
-                {props.e.button_settings.bgPlacement !== "fullScreen" && props.bg ? (
+                {props.e.button_settings.bgPlacement !== "fullScreen" && props.e.button_settings.bg ? (
                     <img src={props.bg} alt="bg" data-id={props.index} data-cat={props.cat} />
                 ) : (
                     ""

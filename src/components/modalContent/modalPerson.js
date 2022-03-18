@@ -12,7 +12,7 @@ import SimpleMap from "../controller/newMap.js";
 const Map = lazy(() => import("../controller/maps.js"));
 
 export default function ModalBox(props) {
-    const [postData, setPostData] = useState(null);
+    const [postData, setPostData] = useState(props.data);
     const [showOverlay, setshowOverlay] = useState(false);
     const builder = imageUrlBuilder(sanityClient);
     const imgRef = useRef();
@@ -24,25 +24,6 @@ export default function ModalBox(props) {
 
     useEffect(() => {
         history.push("/kontakt");
-        sanityClient
-            .fetch(
-                `*[_type == 'person'] {
-                    vorname,
-                    nachname,
-                    position,
-                    icon,
-                    adresse,
-                      poster,
-                    kontakt,
-                    socialmedia
-                  }
-                  `
-            )
-            .then((data) => {
-                setPostData(data);
-            })
-            .catch(console.error);
-        return () => {};
     }, []);
 
     function imageBigger(e) {

@@ -1,6 +1,6 @@
 const vcfTemplate = {
     BEGIN: "VCARD",
-    VERSION: 3.0,
+    VERSION: 4.0,
     FN: "",
     N: "",
     EMAIL: "",

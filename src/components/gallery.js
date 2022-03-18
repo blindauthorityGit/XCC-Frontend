@@ -52,6 +52,7 @@ export default function Gallery(props) {
                         cat="gallery"
                         animation={animation}
                         changeState={(state) => setShowModal(state)}
+                        data={postData}
                     ></ModalBox>
                     <Overlay></Overlay>
                 </>
