@@ -17,6 +17,11 @@ export default function Person(props) {
     const [animation, setAnimation] = useState("");
     const overlayRef = useRef();
 
+    const [street, setStreet] = useState(null);
+    const [city, setCity] = useState(null);
+    // const KEY = process.env.REACT_APP_MAPS_API;
+    // const URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+
     const builder = imageUrlBuilder(sanityClient);
 
     function urlFor(source) {
@@ -45,6 +50,8 @@ export default function Person(props) {
             setNachname(postData[Number(i.target.dataset.id)].nachname);
             setId(Number(i.target.dataset.id));
             setShowModal(true);
+            setStreet(postData[Number(i.target.dataset.id)].adresse.strasse);
+            setCity(postData[Number(i.target.dataset.id)].adresse.ort);
         }, 200);
     }
 
@@ -61,26 +68,26 @@ export default function Person(props) {
                         animation={animation}
                         changeState={(state) => setShowModal(state)}
                         data={postData}
+                        street={street}
+                        city={city}
                     ></ModalBox>
                     <Overlay ref={overlayRef}></Overlay>
                 </>
             )}
             {postData &&
                 postData.map((e, i) => (
-                    <>
-                        <Button
-                            index={i}
-                            key={`person${i}`}
-                            e={e}
-                            icon="bi bi-person-circle"
-                            cat="person"
-                            data={postData}
-                            modal={showModalSwitch}
-                            orderClass={postData[i].orderClass}
-                            orderName={`order-${postData[i].orderClass}`}
-                            bg={urlFor(postData[i].button_settings.bg)}
-                        ></Button>
-                    </>
+                    <Button
+                        index={i}
+                        key={`person${i}`}
+                        e={e}
+                        icon="bi bi-person-circle"
+                        cat="person"
+                        data={postData}
+                        modal={showModalSwitch}
+                        orderClass={postData[i].orderClass}
+                        orderName={`order-${postData[i].orderClass}`}
+                        bg={urlFor(postData[i].button_settings.bg)}
+                    ></Button>
                 ))}
         </>
     );

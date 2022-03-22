@@ -35,19 +35,21 @@ export default function Email(props) {
         <>
             {postData &&
                 postData.map((e, i) => (
-                    <Button_Link
-                        href={`mailto:${postData[i].email}`}
-                        index={i}
-                        e={e}
-                        icon="bi bi-envelope"
-                        cat="email"
-                        data={postData}
-                        key={`email${i}`}
-                        modal={rippler}
-                        orderClass={postData[i].orderClass}
-                        orderName={`order-${postData[i].orderClass}`}
-                        bg={urlFor(postData[i].button_settings.bg)}
-                    ></Button_Link>
+                    <>
+                        <Button_Link
+                            href={`mailto:${postData[i].email}`}
+                            index={i}
+                            e={e}
+                            icon="bi bi-envelope"
+                            cat="email"
+                            data={postData}
+                            key={`email${i}`}
+                            modal={rippler}
+                            orderClass={postData[i].orderClass}
+                            orderName={`order-${postData[i].orderClass}`}
+                            bg={urlFor(postData[i].button_settings.bg)}
+                        ></Button_Link>
+                    </>
                 ))}
         </>
     );

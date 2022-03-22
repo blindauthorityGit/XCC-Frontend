@@ -2,7 +2,7 @@
   "name": "xcc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maletti.xcc-connect.com",
+  "homepage": "https://abtnfc.xcc-connect.com",
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.13.0",
@@ -22,6 +22,7 @@
     "react-scripts": "4.0.3",
     "react-swipeable": "^6.2.0",
     "react-youtube": "^7.13.1",
+    "vcard-creator": "^0.4.2",
     "vcf": "^2.1.1",
     "web-vitals": "^1.1.2"
   },

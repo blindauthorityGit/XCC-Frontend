@@ -15,6 +15,9 @@ export default function ModalBox(props) {
     const myId = props.id;
     const categourie = props.cat;
 
+    const [street, setStreet] = useState(props.street);
+    const [city, setCity] = useState(props.city);
+
     const [locationKeys, setLocationKeys] = useState([]);
 
     const history = useHistory();
@@ -63,7 +66,9 @@ export default function ModalBox(props) {
             </div>
             <div className={`${animationnu} container-fluid position-absolute h-80 modalBox`} ref={ref}>
                 <div>
-                    {categourie === "person" && <ModalPerson id={myId} data={postData}></ModalPerson>}
+                    {categourie === "person" && (
+                        <ModalPerson id={myId} data={postData} street={street} city={city}></ModalPerson>
+                    )}
                     {categourie === "gallery" && <ModalGallery id={myId} data={postData}></ModalGallery>}
                     {categourie === "youtube" && <ModalYoutube id={myId} data={postData} url={url}></ModalYoutube>}
                     {categourie === "inprint" && <ModalInprint id={myId}></ModalInprint>}

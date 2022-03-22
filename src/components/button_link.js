@@ -3,7 +3,7 @@ export default function Button_Link(props) {
         <a
             className={`${props.data[props.index].button_settings.box ? "col-6" : "col-12"} ${
                 props.orderName && props.orderName
-            } pb-2 gx-2 mainBox ${props.index % 2 === 0 ? "slide-in-left" : "slide-in-right"} `}
+            } pb-2 gx-2 mainBox d-block ${props.index % 2 === 0 ? "slide-in-left" : "slide-in-right"} `}
             href={props.href}
             download={props.download}
             data-order={props.orderClass}
@@ -32,7 +32,7 @@ export default function Button_Link(props) {
                 }
                 onClick={props.modal}
             >
-                {props.e.button_settings.icon && <i data-id={props.index} class={props.icon}></i>}
+                {props.e.button_settings.icon && <i data-id={props.index} className={props.icon}></i>}
                 {props.e.button_settings.bgPlacement !== "fullScreen" && props.e.button_settings.bg ? (
                     <img src={props.bg} alt="bg" data-id={props.index} data-cat={props.cat} />
                 ) : (

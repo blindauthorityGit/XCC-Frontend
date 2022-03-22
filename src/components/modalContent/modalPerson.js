@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import sanityClient from "../../client";
 import imageUrlBuilder from "@sanity/image-url";
 import VCFGenerator from "../vcf/vcf-generator";
+import VCFGeneratorTest from "../vcf/vcfTest";
 import defaultPerson from "../../assets/imgs/person-fill.svg";
 // import Map from "../controller/maps.js";
 import removeAnimation from "../controller/animationControl.js";
@@ -18,12 +19,16 @@ export default function ModalBox(props) {
     const imgRef = useRef();
     const history = useHistory();
 
+    const [street, setStreet] = useState(props.street);
+    const [city, setCity] = useState(props.city);
+
     function urlFor(source) {
         return builder.image(source);
     }
 
     useEffect(() => {
         history.push("/kontakt");
+        console.log(street);
     }, []);
 
     function imageBigger(e) {
@@ -198,13 +203,13 @@ export default function ModalBox(props) {
                     {postData[props.id].adresse.maps && (
                         <Suspense fallback={<div>LOADING</div>}>
                             <div className="fade-in-delayed my-4 mapWrapper">
-                                <Map id={props.id}></Map>
+                                <Map id={props.id} street={street} city={city}></Map>
                             </div>
                         </Suspense>
                     )}
                     <div className="row mt-4 scale-in-ver-top-delayed">
                         <div className="col-12 ">
-                            <VCFGenerator
+                            <VCFGeneratorTest
                                 filename={`${postData[props.id].vorname}${postData[props.id].nachname}`}
                                 firstName={postData[props.id].vorname}
                                 lastName={postData[props.id].nachname}
@@ -215,7 +220,7 @@ export default function ModalBox(props) {
                                 city={postData[props.id].adresse.ort}
                                 country={postData[props.id].adresse.land}
                                 email={postData[props.id].kontakt.email}
-                            ></VCFGenerator>
+                            ></VCFGeneratorTest>
                         </div>
                         <div className=" col-12 mt-2 mb-5">
                             <a href={`tel:${postData[props.id].kontakt.telefon}`} className="call button">

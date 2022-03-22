@@ -35,19 +35,21 @@ export default function Person(props) {
             {postData &&
                 postData.map((e, i) => (
                     // eslint-disable-next-line react/jsx-pascal-case
-                    <Button_Link
-                        href={`tel:${postData[i].phone}`}
-                        index={i}
-                        e={e}
-                        icon="bi bi-telephone"
-                        cat="email"
-                        data={postData}
-                        key={`call${i}`}
-                        modal={rippler}
-                        orderClass={postData[i].orderClass}
-                        orderName={`order-${postData[i].orderClass}`}
-                        bg={urlFor(postData[i].button_settings.bg)}
-                    ></Button_Link>
+                    <>
+                        <Button_Link
+                            href={`tel:${postData[i].phone}`}
+                            index={i}
+                            e={e}
+                            icon="bi bi-telephone"
+                            cat="email"
+                            data={postData}
+                            key={`call${i}`}
+                            modal={rippler}
+                            orderClass={postData[i].orderClass}
+                            orderName={`order-${postData[i].orderClass}`}
+                            bg={urlFor(postData[i].button_settings.bg)}
+                        ></Button_Link>
+                    </>
                 ))}
         </>
     );
