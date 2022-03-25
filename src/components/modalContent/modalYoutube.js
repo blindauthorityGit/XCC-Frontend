@@ -18,7 +18,7 @@ export default function Youtube(props) {
     useEffect(() => {
         history.push("/video");
 
-        // setUrl(getYouTubeID(postData[myId].url));
+        setUrl(getYouTubeID(postData[myId].url));
         setOpts({
             height: "390",
             width: window.innerWidth,
@@ -63,6 +63,7 @@ export default function Youtube(props) {
                             opts={opts}
                             onEnd={() => {
                                 console.log("ENDEE");
+                                document.querySelector("#closer").click();
                             }}
                         ></YouTube>
                     </div>
@@ -70,7 +71,9 @@ export default function Youtube(props) {
                         <div className="row">
                             <div className="col" style={{ paddingTop: opts.height + "px" }}>
                                 <div className="textWrapper">
-                                    <BlockContent blocks={postData[myId].beschreibung}></BlockContent>
+                                    {postData[myId].beschreibung !== undefined && (
+                                        <BlockContent blocks={postData[myId].beschreibung}></BlockContent>
+                                    )}
                                 </div>
                             </div>
                         </div>

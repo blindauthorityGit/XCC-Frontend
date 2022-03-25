@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import sanityClient from "../client";
 
 import ModalBox from "./modal.js";
@@ -26,6 +26,10 @@ export default function Youtube(props) {
     var getYouTubeID = require("get-youtube-id");
     const [url, setUrl] = useState([]);
 
+    const [wasHere, setWasHere] = useState(false);
+
+    const buttonRef = useRef();
+
     function urlFor(source) {
         return builder.image(source);
     }
@@ -41,15 +45,22 @@ export default function Youtube(props) {
                 setPostData(data);
                 console.log(data);
                 data.map((e, i) => {
-                    console.log(e.button_settings.bg);
                     setUrl((url) => [...url, getYouTubeID(data[i].url)]);
                 });
+                console.log(buttonRef.current);
+                // setAnimation("slide-in-top");
+                // setId(0);
                 // setShowModal(true);
-                setTimeout(() => {
-                    console.log(isLoading, isFetching, error, data, status);
-                    console.log(url);
-                }, 5000);
             })
+            .then(() => {
+                setTimeout(() => {
+                    if (!wasHere) {
+                        document.querySelector("#ytBT").click();
+                        setWasHere(true);
+                    }
+                }, 1000);
+            })
+
             .catch(console.error);
     });
 
@@ -111,6 +122,8 @@ export default function Youtube(props) {
                         bg={urlFor(postData[i].button_settings.bg)}
                         orderClass={postData[i].orderClass}
                         orderName={`order-${postData[i].orderClass}`}
+                        ref={buttonRef}
+                        id="ytBT"
                     ></Button>
                 ))}
 

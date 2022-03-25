@@ -32,6 +32,7 @@ export default function Button(props) {
                 data-id={props.index}
                 data-cat={props.cat}
                 key={props.index}
+                id={props.id}
                 style={
                     props.bg && props.e.button_settings.bgPlacement === "fullScreen"
                         ? { backgroundImage: "url(" + props.bg + ")" }

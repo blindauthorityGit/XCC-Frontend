@@ -30,7 +30,9 @@ export default function VCFGeneratorTest(props) {
     // Template.ADR = props.street;
     const EMAIL = props.email;
 
-    const isAppleMobile = ["iPad", "iPhone", "iPod"].includes(navigator.userAgentData.platform);
+    const isAppleMobile = ["iPad", "iPhone", "iPod"].includes(navigator.platform);
+
+    console.log(navigator.platform);
 
     myVCard.setFormat(isAppleMobile ? "vcalendar" : "vcard");
 
