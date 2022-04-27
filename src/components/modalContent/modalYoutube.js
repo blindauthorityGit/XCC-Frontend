@@ -63,7 +63,6 @@ export default function Youtube(props) {
                             opts={opts}
                             onEnd={() => {
                                 console.log("ENDEE");
-                                document.querySelector("#closer").click();
                             }}
                         ></YouTube>
                     </div>

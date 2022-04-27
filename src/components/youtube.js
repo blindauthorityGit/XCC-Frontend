@@ -47,19 +47,19 @@ export default function Youtube(props) {
                 data.map((e, i) => {
                     setUrl((url) => [...url, getYouTubeID(data[i].url)]);
                 });
-                console.log(buttonRef.current);
+
                 // setAnimation("slide-in-top");
                 // setId(0);
                 // setShowModal(true);
             })
-            .then(() => {
-                setTimeout(() => {
-                    if (!wasHere) {
-                        document.querySelector("#ytBT").click();
-                        setWasHere(true);
-                    }
-                }, 1000);
-            })
+            // .then(() => {
+            //     setTimeout(() => {
+            //         if (!wasHere) {
+            //             document.querySelector("#ytBT").click();
+            //             setWasHere(true);
+            //         }
+            //     }, 1000);
+            // })
 
             .catch(console.error);
     });
