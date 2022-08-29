@@ -72,6 +72,16 @@ export default function Person(props) {
                             )}
                         </div>
                     )}
+                    {/* YOUTUBE */}
+                    {postData[0].socialmedia_global !== undefined && (
+                        <div className="youtube">
+                            {postData[0].socialmedia_global.whatsapp && (
+                                <a href={postData[0].socialmedia_global.youtube}>
+                                    <i class="bi bi-youtube"></i>
+                                </a>
+                            )}
+                        </div>
+                    )}
                 </div>
             )}
         </div>

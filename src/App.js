@@ -2,6 +2,9 @@ import React, { useEffect, Suspense, lazy } from "react";
 import "./App.css";
 import "./css/main.css";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 // import Person from "./components/person.js";
 // import Gallery from "./components/gallery.js";
 // import Youtube from "./components/youtube.js";
@@ -14,6 +17,8 @@ import sanityClient from "./client";
 import Sponsored from "./components/sponsored.js";
 import Inprint from "./components/sites/inprint";
 import Datenschutz from "./components/sites/datenschutz";
+
+const queryClient = new QueryClient();
 
 const Settings = lazy(() => import("./components/settings.js"));
 
@@ -44,30 +49,33 @@ function App() {
     }, []);
 
     return (
-        <div className="container-fluid position-relative">
-            <>
-                <Suspense fallback={<div></div>}>
-                    <Settings></Settings>
-                </Suspense>
-            </>
-            <div className="wrapperMain">
-                <div className="row">
-                    <Suspense fallback={<div>LOADING</div>}>
-                        <Person></Person>
-                        <Gallery></Gallery>
-                        <Youtube></Youtube>
-                        <Links></Links>
-                        <Email></Email>
-                        <Call></Call>
+        <QueryClientProvider client={queryClient}>
+            <div className="container-fluid position-relative">
+                <>
+                    <Suspense fallback={<div></div>}>
+                        <Settings></Settings>
                     </Suspense>
+                </>
+                <div className="wrapperMain">
+                    <div className="row">
+                        <Suspense fallback={<div>LOADING</div>}>
+                            <Person></Person>
+                            <Gallery></Gallery>
+                            <Youtube></Youtube>
+                            <Links></Links>
+                            <Email></Email>
+                            <Call></Call>
+                        </Suspense>
+                    </div>
+                </div>
+                <Sponsored></Sponsored>
+                <div className="flex rechtliches justify-center text-gray-200 mb-10">
+                    <Inprint></Inprint>
+                    <Datenschutz></Datenschutz>
                 </div>
             </div>
-            <Sponsored></Sponsored>
-            <div className="flex rechtliches justify-center text-gray-200 mb-10">
-                <Inprint></Inprint>
-                <Datenschutz></Datenschutz>
-            </div>
-        </div>
+            <ReactQueryDevtools initialIsOpen></ReactQueryDevtools>
+        </QueryClientProvider>
     );
 }
 

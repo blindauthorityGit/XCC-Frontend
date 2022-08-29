@@ -411,6 +411,10 @@ span.ripple {
   padding-bottom: 2rem;
 }
 
+.fullScreenBG {
+  background-size: cover;
+}
+
 .thumbnail {
   width: 5.8rem;
   height: 5.8rem;

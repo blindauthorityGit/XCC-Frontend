@@ -8,7 +8,7 @@ import removeAnimation from "../controller/animationControl.js";
 import { useHistory } from "react-router-dom";
 
 export default function ModalGallery(props) {
-    const [postData, setPostData] = useState(null);
+    const [postData, setPostData] = useState(props.data);
     const [myId, setMyId] = useState(props.id);
 
     const BlockContent = require("@sanity/block-content-to-react");
@@ -22,19 +22,6 @@ export default function ModalGallery(props) {
 
     useEffect(() => {
         history.push("/gallery");
-
-        sanityClient
-            .fetch(
-                `*[_type == 'gallery'] {
-                    images,
-                    beschreibung
-                  }
-                  `
-            )
-            .then((data) => {
-                setPostData(data);
-            })
-            .catch(console.error);
     }, []);
 
     return (

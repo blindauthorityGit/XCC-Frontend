@@ -9,9 +9,14 @@ import ModalDatenschutz from "./modalContent/modalDatenschutz";
 import ModalCustom from "./modalContent/modalCustom";
 
 export default function ModalBox(props) {
+    const [postData, setPostData] = useState(props.data);
+    const [url, setUrl] = useState(props.url);
     const [animationnu, setAnimationnu] = useState(props.animation);
     const myId = props.id;
     const categourie = props.cat;
+
+    const [street, setStreet] = useState(props.street);
+    const [city, setCity] = useState(props.city);
 
     const [locationKeys, setLocationKeys] = useState([]);
 
@@ -61,9 +66,11 @@ export default function ModalBox(props) {
             </div>
             <div className={`${animationnu} container-fluid position-absolute h-80 modalBox`} ref={ref}>
                 <div>
-                    {categourie === "person" && <ModalPerson id={myId}></ModalPerson>}
-                    {categourie === "gallery" && <ModalGallery id={myId}></ModalGallery>}
-                    {categourie === "youtube" && <ModalYoutube id={myId}></ModalYoutube>}
+                    {categourie === "person" && (
+                        <ModalPerson id={myId} data={postData} street={street} city={city}></ModalPerson>
+                    )}
+                    {categourie === "gallery" && <ModalGallery id={myId} data={postData}></ModalGallery>}
+                    {categourie === "youtube" && <ModalYoutube id={myId} data={postData} url={url}></ModalYoutube>}
                     {categourie === "inprint" && <ModalInprint id={myId}></ModalInprint>}
                     {categourie === "datenschutz" && <ModalDatenschutz id={myId}></ModalDatenschutz>}
                     {categourie === "custom" && <ModalCustom id={myId}></ModalCustom>}

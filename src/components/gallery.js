@@ -7,11 +7,19 @@ import Overlay from "./overlay.js";
 
 import { createRipple } from "./controller/rippler.js";
 
+import imageUrlBuilder from "@sanity/image-url";
+
 export default function Gallery(props) {
     const [postData, setPostData] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [id, setId] = useState(null);
     const [animation, setAnimation] = useState("");
+
+    const builder = imageUrlBuilder(sanityClient);
+
+    function urlFor(source) {
+        return builder.image(source);
+    }
 
     useEffect(() => {
         sanityClient
@@ -44,6 +52,7 @@ export default function Gallery(props) {
                         cat="gallery"
                         animation={animation}
                         changeState={(state) => setShowModal(state)}
+                        data={postData}
                     ></ModalBox>
                     <Overlay></Overlay>
                 </>
@@ -61,6 +70,7 @@ export default function Gallery(props) {
                         className={props.class}
                         orderClass={postData[i].orderClass}
                         orderName={`order-${postData[i].orderClass}`}
+                        bg={urlFor(postData[i].button_settings.bg)}
                     ></Button>
                 ))}
         </>

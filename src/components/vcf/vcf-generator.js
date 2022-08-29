@@ -15,11 +15,12 @@ export default function VCFGenerator(props) {
     }
 
     Template.FN = props.firstName;
-    Template.N = props.lastName;
+    Template.N = props.firstName + " " + props.lastName;
     Template.ROLE = props.role;
     Template.TEL = props.phone;
     Template.URL = props.url;
-    Template.ADR = `${props.street} ${props.city} ${props.country}`;
+    Template.ADR = `${props.street};${props.city};${props.country}`;
+    // Template.ADR = props.street;
     Template.EMAIL = props.email;
 
     let text = JSON.stringify(Template).replace(/[{}]/g, "").replace(/["]/g, "").replace(/[,]/g, "\n");
