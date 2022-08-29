@@ -14,6 +14,7 @@ export default function Person(props) {
             )
             .then((data) => {
                 setPostData(data);
+                console.log(data);
             })
             .catch(console.error);
     }, []);
@@ -75,7 +76,7 @@ export default function Person(props) {
                     {/* YOUTUBE */}
                     {postData[0].socialmedia_global !== undefined && (
                         <div className="youtube">
-                            {postData[0].socialmedia_global.whatsapp && (
+                            {postData[0].socialmedia_global.youtube && (
                                 <a href={postData[0].socialmedia_global.youtube}>
                                     <i class="bi bi-youtube"></i>
                                 </a>
